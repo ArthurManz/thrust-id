@@ -1,0 +1,51 @@
+body {
+    padding-bottom: 120px;
+}
+
+.thrust-navbar-text {
+  color: white;
+}
+
+.thrust-navbar-logo-image {
+  padding-top: 2px;
+  height: 48px;
+}
+
+ul.nav.navbar-nav.navbar-right li>a,
+ul.nav.navbar-nav.navbar-right li>a:active,
+ul.nav.navbar-nav.navbar-right li>a:link,
+ul.nav.navbar-nav.navbar-right li>a:visited
+{
+  color: white;
+  background-color: transparent;
+}
+
+ul.nav.navbar-nav.navbar-right li>a:hover {
+  color: #727272;
+}
+
+.thrust-navbar-logo-text,
+.thrust-navbar-logo-text:active,
+.thrust-navbar-logo-text:visited {
+  color: white;
+  font-weight: 600;
+  padding-right: 5px;
+}
+
+.thrust-navbar-logo-text:hover {
+  color: #727272;
+}
+
+.thrust-navbar-text:hover {
+  color: white;
+}
+
+.nav-padding-input {
+  padding: 10px 5px;
+}
+
+.thrust-navbar {
+  background-color: #039be5;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+}
