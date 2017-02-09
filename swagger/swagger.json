@@ -1,0 +1,194 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is the API definition for Thrust Ethereum",
+    "version" : "1.0.0",
+    "title" : "Thrust Ethereum",
+    "contact" : {
+      "name" : "Thrust ID Team"
+    },
+    "license" : {
+      "name" : "MIT"
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/ArthurManz/thrust-ethereum/1.0.0",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/refugee" : {
+      "get" : {
+        "summary" : "Searches refugees",
+        "description" : "By passing in the appropriate options, you can filter your search\n",
+        "operationId" : "searchRefugees",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "firstName",
+          "in" : "query",
+          "description" : "Pass an optional search string for searching by First Name",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lastName",
+          "in" : "query",
+          "description" : "Pass an optional search string for searching by Last Name",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "rating",
+          "in" : "query",
+          "description" : "Pass an optional search string for searching by Rating",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "country",
+          "in" : "query",
+          "description" : "Pass an optional search string for searching by Country",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "documentId",
+          "in" : "query",
+          "description" : "Pass an optional search string for searching by Document ID",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/RefugeeOverview"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Adds a Refugee",
+        "description" : "Adds a refugee to the system",
+        "operationId" : "addRefugee",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "refugeeCreation",
+          "description" : "Inventory item to add",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/RefugeeCreation"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Refugee created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "found a registered refugee in the blockchain {{id}}"
+          }
+        }
+      }
+    },
+    "/refugee/{refugeeId}" : {
+      "get" : {
+        "summary" : "Searches refugees",
+        "description" : "By passing in the appropriate options, you can filter your search\n",
+        "operationId" : "searchRefugees",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "search for refugee details, for the given refugeeId",
+            "schema" : {
+              "type" : "object",
+              "properties" : { }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Modifies refugee's details",
+        "description" : "Adds a refugee to the system",
+        "operationId" : "addRefugee",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "refugeeCreation",
+          "description" : "Inventory item to add",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/RefugeeDetails"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search for refugee details, for the given refugeeId",
+            "schema" : {
+              "type" : "object",
+              "properties" : { }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "RefugeeOverview" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid",
+          "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Widget Adapter"
+        },
+        "releaseDate" : {
+          "type" : "string",
+          "format" : "int32",
+          "example" : "2016-08-29T09:12:33.001Z"
+        },
+        "manufacturer" : {
+          "$ref" : "#/definitions/Manufacturer"
+        }
+      }
+    },
+    "Manufacturer" : {
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "ACME Corporation"
+        },
+        "homePage" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://www.acme-corp.com"
+        },
+        "phone" : {
+          "type" : "string",
+          "example" : "408-867-5309"
+        }
+      }
+    }
+  }
+}
