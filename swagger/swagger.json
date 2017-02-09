@@ -242,8 +242,13 @@
     },
     "RefugeeDetails" : {
       "type" : "object",
-      "required" : [ "birthDate", "civilStatus", "documentId", "documentType", "fingerprintHash", "firstName", "gender", "history", "lastName", "originCountry", "photoHash", "registrationCountry" ],
+      "required" : [ "birthDate", "civilStatus", "documentId", "documentType", "fingerprintHash", "firstName", "gender", "history", "id", "lastName", "originCountry", "photoHash", "registrationCountry" ],
       "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid",
+          "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        },
         "firstName" : {
           "type" : "string",
           "example" : "Arturo"
@@ -299,8 +304,7 @@
           "enum" : [ "A", "B", "AB", "0" ]
         },
         "history" : {
-          "type" : "object",
-          "properties" : { }
+          "type" : "array"
         }
       }
     }
