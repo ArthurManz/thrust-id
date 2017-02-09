@@ -240,6 +240,65 @@
         }
       }
     },
-    "RefugeeDetails" : { }
+    "RefugeeDetails" : {
+      "type" : "object",
+      "required" : [ "birthDate", "civilStatus", "documentId", "documentType", "fingerprintHash", "firstName", "gender", "lastName", "originCountry", "photoHash", "registrationCountry" ],
+      "properties" : {
+        "firstName" : {
+          "type" : "string",
+          "example" : "Arturo"
+        },
+        "lastName" : {
+          "type" : "string",
+          "example" : "Manzaneda"
+        },
+        "documentId" : {
+          "type" : "string",
+          "example" : "44793290A"
+        },
+        "documentType" : {
+          "type" : "string",
+          "example" : "ID"
+        },
+        "birthDate" : {
+          "type" : "string",
+          "format" : "date",
+          "example" : "1988-05-10"
+        },
+        "civilStatus" : {
+          "type" : "string",
+          "example" : "Single",
+          "enum" : [ "Single", "Divorced", "Separated", "Widow", "Living common law", "Married" ]
+        },
+        "gender" : {
+          "type" : "string",
+          "example" : "Male",
+          "enum" : [ "Male", "Female" ]
+        },
+        "fingerprintHash" : {
+          "type" : "string",
+          "example" : "1929233838383833848484848484844747474",
+          "maxLength" : 1000
+        },
+        "photoHash" : {
+          "type" : "string",
+          "example" : "3393939393939393939384746758484448488",
+          "maxLength" : 1000
+        },
+        "registrationCountry" : {
+          "type" : "string",
+          "example" : "Netherlands"
+        },
+        "originCountry" : {
+          "type" : "string",
+          "example" : "Syria"
+        },
+        "bloodGroup" : {
+          "type" : "string",
+          "example" : "A",
+          "enum" : [ "A", "B", "AB", "0" ]
+        }
+      }
+    }
   }
 }
