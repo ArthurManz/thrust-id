@@ -242,7 +242,7 @@
     },
     "RefugeeDetails" : {
       "type" : "object",
-      "required" : [ "birthDate", "civilStatus", "documentId", "documentType", "fingerprintHash", "firstName", "gender", "lastName", "originCountry", "photoHash", "registrationCountry" ],
+      "required" : [ "birthDate", "civilStatus", "documentId", "documentType", "fingerprintHash", "firstName", "gender", "history", "lastName", "originCountry", "photoHash", "registrationCountry" ],
       "properties" : {
         "firstName" : {
           "type" : "string",
@@ -297,6 +297,10 @@
           "type" : "string",
           "example" : "A",
           "enum" : [ "A", "B", "AB", "0" ]
+        },
+        "history" : {
+          "type" : "object",
+          "properties" : { }
         }
       }
     }
