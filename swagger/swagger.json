@@ -93,10 +93,10 @@
             "description" : "Refugee created"
           },
           "400" : {
-            "description" : "invalid input, object invalid"
+            "description" : "Invalid input, invalid refugee"
           },
           "409" : {
-            "description" : "found a registered refugee in the blockchain {{id}}"
+            "description" : "Found a registered refugee in the blockchain {{id}}"
           }
         }
       }
