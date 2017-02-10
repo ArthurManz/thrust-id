@@ -212,7 +212,7 @@ gulp.task('eslint', function () {
 	runSequence(eslint.front(), eslint.back());
 });
 
-gulp.task('test', ['wiredep:test', 'ngconstant:dev'], function (done) {
+gulp.task('test', ['wiredep:test'], function (done) {
 	new KarmaServer({
 		configFile: __dirname + config.path.client + 'karma.conf.js',
 		singleRun: true
@@ -229,7 +229,6 @@ gulp.task("revreplace", function () {
 
 gulp.task('watch', function () {
 	gulp.watch('bower.json', ['install']);
-	gulp.watch('gulpfile.js', ['ngconstant:dev']);
 	gulp.watch(config.path.src + '**/*.css', ['styles']);
 	gulp.watch(config.path.src + 'statics/images/**', ['images']);
 	gulp.watch(path.resolve(config.path.src, 'app/**/*.js'), ['inject:dev']);
@@ -245,7 +244,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('build', ['clean'], function (cb) {
-	runSequence(['copy', 'wiredep:app', 'ngconstant:prod'], 'inject', 'assets:prod', 'revreplace', cb);
+	runSequence(['copy', 'wiredep:app'], 'inject', 'assets:prod', 'revreplace', cb);
 });
 
 gulp.task('default', ['serve']);

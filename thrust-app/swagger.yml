@@ -1,0 +1,310 @@
+swagger: '2.0'
+info:
+  description: This is the API definition for Thrust Ethereum
+  version: 1.0.0
+  title: Thrust Ethereum
+  # put the contact info for your development or API team
+  contact:
+    name: Thrust ID Team
+
+  license:
+    name: MIT
+
+# all paths will be relative to the basePath specified
+basePath: /v1
+
+schemes:
+- https
+paths:
+  /refugee:
+    get:
+      summary: Searches refugees
+      operationId: searchRefugees
+      description: |
+        By passing in the appropriate options, you can filter your search
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: firstName
+        description: Pass an optional search string for searching by First Name
+        required: false
+        type: string
+      - in: query
+        name: lastName
+        description: Pass an optional search string for searching by Last Name
+        required: false
+        type: string
+      - in: query
+        name: rating
+        description: Pass an optional search string for searching by Rating
+        required: false
+        type: string
+      - in: query
+        name: country
+        description: Pass an optional search string for searching by Country
+        required: false
+        type: string
+      - in: query
+        name: documentId
+        description: Pass an optional search string for searching by Document ID
+        required: false
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/RefugeeOverview'
+        400:
+          description: bad input parameter
+        401:
+          description: Unauthorized
+    post:
+      summary: Adds a Refugee
+      operationId: addRefugee
+      description: Adds a refugee to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: refugeeCreation
+        description: New refugee registration information
+        schema:
+          $ref: '#/definitions/RefugeeCreation'
+      responses:
+        200:
+          description: Refugee created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: found a registered refugee in the blockchain {{id}}
+  /refugee/{refugeeId}:
+    get:
+      summary: Searches refugees
+      operationId: searchRefugees
+      description: |
+        By passing in the appropriate options, you can filter your search
+      produces:
+      - application/json
+      responses:
+        200:
+          description: search for refugee details, for the given refugeeId
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/RefugeeDetails'
+        400:
+          description: bad input parameter
+    post:
+      summary: Modifies refugee's details
+      operationId: addRefugee
+      description: Adds a refugee to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: refugeeCreation
+        description: Inventory item to add
+        schema:
+          $ref: '#/definitions/RefugeeDetails'
+      responses:
+        200:
+          description: search for refugee details, for the given refugeeId
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/RefugeeDetails'
+        400:
+          description: bad input parameter
+
+definitions:
+  RefugeeOverview:
+    type: object
+    required:
+    - id
+    - firstName
+    - lastName
+    - status
+    - documentId
+    - rating
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      firstName:
+        type: string
+        example: Arturo
+      lastName:
+        type: string
+        example: Manzaneda
+      status:
+        type: string
+        example: Created
+      documentId:
+        type: string
+        example: 44793290A
+      rating:
+        type: string
+        example: A
+  RefugeeCreation:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - documentId
+    - documentType
+    - birthDate
+    - civilStatus
+    - gender
+    - fingerprintHash
+    - photoHash
+    - registrationCountry
+    - originCountry
+    - civilStatus
+    - gender
+    properties:
+      firstName:
+        type: string
+        example: Arturo
+      lastName:
+        type: string
+        example: Manzaneda
+      documentId:
+        type: string
+        example: 44793290A
+      documentType:
+        type: string
+        example: ID
+      birthDate:
+        type: string
+        format: date
+        example: 1988-05-10
+      civilStatus:
+        type: string
+        enum:
+          - Single
+          - Divorced
+          - Separated
+          - Widow
+          - Living common law
+          - Married
+        example: Single
+      gender:
+        type: string
+        enum:
+          - Male
+          - Female
+        example: Male
+      fingerprintHash:
+        type: string
+        maxLength: 1000
+        example: 1929233838383833848484848484844747474
+      photoHash:
+        type: string
+        maxLength: 1000
+        example: 3393939393939393939384746758484448488
+      registrationCountry:
+        type: string
+        example: Netherlands
+      originCountry:
+        type: string
+        example: Syria
+      bloodGroup:
+        type: string
+        enum:
+          - A
+          - B
+          - AB
+          - 0
+        example: A
+  RefugeeDetails:
+    type: object
+    required:
+    - id
+    - firstName
+    - lastName
+    - documentId
+    - documentType
+    - birthDate
+    - civilStatus
+    - gender
+    - fingerprintHash
+    - photoHash
+    - registrationCountry
+    - originCountry
+    - civilStatus
+    - gender
+    - history
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      firstName:
+        type: string
+        example: Arturo
+      lastName:
+        type: string
+        example: Manzaneda
+      documentId:
+        type: string
+        example: 44793290A
+      documentType:
+        type: string
+        example: ID
+      birthDate:
+        type: string
+        format: date
+        example: 1988-05-10
+      civilStatus:
+        type: string
+        enum:
+          - Single
+          - Divorced
+          - Separated
+          - Widow
+          - Living common law
+          - Married
+        example: Single
+      gender:
+        type: string
+        enum:
+          - Male
+          - Female
+        example: Male
+      fingerprintHash:
+        type: string
+        maxLength: 1000
+        example: 1929233838383833848484848484844747474
+      photoHash:
+        type: string
+        maxLength: 1000
+        example: 3393939393939393939384746758484448488
+      registrationCountry:
+        type: string
+        example: Netherlands
+      originCountry:
+        type: string
+        example: Syria
+      bloodGroup:
+        type: string
+        enum:
+          - A
+          - B
+          - AB
+          - 0
+        example: A
+      history:
+        type: array
+        
+
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /ArthurManz/thrust-ethereum/1.0.0

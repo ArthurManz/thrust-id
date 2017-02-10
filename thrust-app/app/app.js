@@ -8,7 +8,7 @@ var path = require('path');
 
 // Internal router modules
 var index = require('./routes/index');
-var contracts = require('./routes/api');
+var api = require('./routes/api');
 
 var app = express();
 
@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // Routing of the server
 app.use('/', index);
-app.use('/api', contracts);
+app.use('/api', api);
 
 // Error Handlers
 app.use(function(err, req, res, next) {
