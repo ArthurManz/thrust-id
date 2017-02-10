@@ -3,6 +3,7 @@ contract Refugee{
 	event LogRefugeePersonalData(string indexed firstName, string indexed lastName, string indexed documentId,address contractAddress);
     event LogRefugeeCountryRating(address indexed name_lastName, string indexed country, string indexed rating,address contractAddress);
   
+  	event LogAction(address indexed contractAddress,address modifier,string action,string details,string dateAdded )
 	
 	enum Status {
         Rejected,
@@ -80,7 +81,8 @@ contract Refugee{
 		string _fingerprintHash,
 		string _photoHash) 
 	{
-        personalData.firstName=_firstName;
+        ratingList.
+		personalData.firstName=_firstName;
 		personalData.lastName=_lastName;
 	    personalData.city=_city;
 		personalData.gender=_gender;
@@ -97,6 +99,44 @@ contract Refugee{
         
 		LogRefugeePersonalData(personalData.firstName,  personalData.lastName, personalData.documentId, this);
 	}
+
+	function getRefugeePersonalData()  constant returns (string,string,string,string,string,string,string,string,
+	string,string,string,string,Status)
+	{
+		return(
+        personalData.firstName,
+		personalData.lastName,
+	    personalData.city,
+		personalData.gender,
+		personalData.bloodGroup,
+		personalData.birthDate,
+        personalData.civilStatus,
+		personalData.countryOrigin,
+		personalData.documentType,
+		personalData.documentId,
+		personalData.fingerprintHash,
+		personalData.photoHash,
+		status);
+	}
+
+
+	 function setRatingdata( string _rating,
+		string _rater,
+		string _details,
+		string _dateAdded) 
+	{
+	 	ratingList.push(Rating({
+                    rating: _rating,
+                    rater: _rater,
+                    details: _details,
+					dateAdded: _dateAdded
+                }));
+        
+		
+  	 	LogAction(this,msg.sender, "Rating",_details,_dateAdded)
+	}
+
+
 
 
 
