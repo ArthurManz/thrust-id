@@ -1,0 +1,21 @@
+{
+    "nonce":"0x0000000000000042",
+    "timestamp": "0x0",
+    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "extraData":"Welcome to ThrustIdChain!",
+    "difficulty":"0x40",
+    "coinbase": "miner",
+    "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "gasLimit" : "0xffffff42",
+    "alloc": {
+        "GovernmentAdmin": { "balance": "5000000000000000000000" },
+        "GovernmentRead": { "balance": "5000000000000000000000" },
+        "GovernmentCreate": { "balance": "5000000000000000000000" },
+        "UNAdmin": { "balance": "5000000000000000000000" },
+        "UNRead": { "balance": "5000000000000000000000" },
+        "UNCreate": { "balance": "5000000000000000000000" },
+        "RedCrossAdmin": { "balance": "5000000000000000000000" },
+	"RedCrossRead": { "balance": "5000000000000000000000" },
+	"RedCrossCreate": { "balance": "5000000000000000000000" }
+    }
+}
