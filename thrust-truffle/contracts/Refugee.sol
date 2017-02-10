@@ -136,6 +136,18 @@ contract Refugee{
   	 	LogAction(this,msg.sender, "Rating",_details,_dateAdded)
 	}
 
+	function getLastRatingData() constant returns (string, string, string, string)
+	{
+	 	uint256 lastIndex=ratingList.length-1;		
+		if(lastIndex>-1)
+		{
+			return(ratingList[lastIndex].rating,ratingList[lastIndex].rater,ratingList[lastIndex].details,ratingList[lastIndex].dateAdded);
+		}
+		else
+		{
+			return("","","","","");
+		}
+	}
 
 
 
