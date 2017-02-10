@@ -299,8 +299,8 @@
         },
         "bloodGroup" : {
           "type" : "string",
-          "example" : "A",
-          "enum" : [ "A", "B", "AB", "0" ]
+          "enum" : [ "A", "B", "AB", "0" ],
+          "default" : "A"
         },
         "history" : {
           "type" : "array"
