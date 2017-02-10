@@ -71,16 +71,16 @@
         }
       },
       "post" : {
-        "summary" : "Adds a Refugee",
-        "description" : "Adds a refugee to the system",
-        "operationId" : "addRefugee",
+        "summary" : "Adds a new refugee",
+        "description" : "Adds a new refugee to the system",
+        "operationId" : "addNewRefugee",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "in" : "body",
-          "name" : "refugeeCreation",
+          "name" : "body",
           "description" : "New refugee registration information",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "$ref" : "#/definitions/RefugeeCreation"
           }
@@ -102,15 +102,20 @@
       "get" : {
         "summary" : "Searches refugees",
         "description" : "By passing in the appropriate options, you can filter your search\n",
-        "operationId" : "searchRefugees",
+        "operationId" : "searchRefugee",
         "produces" : [ "application/json" ],
-        "parameters" : [ ],
+        "parameters" : [ {
+          "name" : "refugeeId",
+          "in" : "path",
+          "description" : "The address of the refugee smart contract.",
+          "required" : true,
+          "type" : "string"
+        } ],
         "responses" : {
           "200" : {
             "description" : "search for refugee details, for the given refugeeId",
             "schema" : {
-              "type" : "object",
-              "properties" : { }
+              "$ref" : "#/definitions/RefugeeDetails"
             }
           },
           "400" : {
@@ -121,25 +126,27 @@
       "post" : {
         "summary" : "Modifies refugee's details",
         "description" : "Adds a refugee to the system",
-        "operationId" : "addRefugee",
+        "operationId" : "addModifyExistingRefugee",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
+          "name" : "refugeeId",
+          "in" : "path",
+          "description" : "The address of the refugee smart contract.",
+          "required" : true,
+          "type" : "string"
+        }, {
           "in" : "body",
-          "name" : "refugeeDetails",
+          "name" : "body",
           "description" : "Modify or Add refugee details",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "$ref" : "#/definitions/RefugeeDetails"
           }
         } ],
         "responses" : {
           "200" : {
-            "description" : "details added or modified succesfully",
-            "schema" : {
-              "type" : "object",
-              "properties" : { }
-            }
+            "description" : "details added or modified succesfully"
           },
           "400" : {
             "description" : "bad input parameter"
@@ -175,13 +182,12 @@
         },
         "rating" : {
           "type" : "string",
-          "example" : "A",
-          "enum" : [ "A", "B", "C", "D" ]
+          "enum" : [ "A", "B", "C", "D" ],
+          "default" : "A"
         }
       }
     },
     "RefugeeCreation" : {
-      "required" : [ "birthDate", "civilStatus", "documentId", "documentType", "fingerprintHash", "firstName", "gender", "lastName", "originCountry", "photoHash", "registrationCountry" ],
       "properties" : {
         "firstName" : {
           "type" : "string",
@@ -206,13 +212,13 @@
         },
         "civilStatus" : {
           "type" : "string",
-          "example" : "Single",
-          "enum" : [ "Single", "Divorced", "Separated", "Widow", "Living common law", "Married" ]
+          "enum" : [ "Single", "Divorced", "Separated", "Widow", "Living common law", "Married" ],
+          "default" : "Single"
         },
         "gender" : {
           "type" : "string",
-          "example" : "Male",
-          "enum" : [ "Male", "Female" ]
+          "enum" : [ "Male", "Female" ],
+          "default" : "Male"
         },
         "fingerprintHash" : {
           "type" : "string",
@@ -234,14 +240,12 @@
         },
         "bloodGroup" : {
           "type" : "string",
-          "example" : "A",
-          "enum" : [ "A", "B", "AB", "0" ]
+          "enum" : [ "A", "B", "AB", "0" ],
+          "default" : "A"
         }
       }
     },
     "RefugeeDetails" : {
-      "type" : "object",
-      "required" : [ "birthDate", "civilStatus", "documentId", "documentType", "fingerprintHash", "firstName", "gender", "history", "id", "lastName", "originCountry", "photoHash", "registrationCountry" ],
       "properties" : {
         "id" : {
           "type" : "string",
@@ -270,13 +274,13 @@
         },
         "civilStatus" : {
           "type" : "string",
-          "example" : "Single",
-          "enum" : [ "Single", "Divorced", "Separated", "Widow", "Living common law", "Married" ]
+          "enum" : [ "Single", "Divorced", "Separated", "Widow", "Living common law", "Married" ],
+          "default" : "Single"
         },
         "gender" : {
           "type" : "string",
-          "example" : "Male",
-          "enum" : [ "Male", "Female" ]
+          "enum" : [ "Male", "Female" ],
+          "default" : "Female"
         },
         "fingerprintHash" : {
           "type" : "string",
@@ -300,14 +304,6 @@
           "type" : "string",
           "enum" : [ "A", "B", "AB", "0" ],
           "default" : "A"
-        },
-        "history" : {
-          "type" : "array",
-          "items" : {
-            "type" : "object",
-            "description" : "",
-            "properties" : { }
-          }
         }
       }
     }
