@@ -126,8 +126,8 @@
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "in" : "body",
-          "name" : "refugeeCreation",
-          "description" : "Inventory item to add",
+          "name" : "refugeeDetails",
+          "description" : "Modify or Add refugee details",
           "required" : false,
           "schema" : {
             "$ref" : "#/definitions/RefugeeDetails"
@@ -135,7 +135,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "search for refugee details, for the given refugeeId",
+            "description" : "details added or modified succesfully",
             "schema" : {
               "type" : "object",
               "properties" : { }
