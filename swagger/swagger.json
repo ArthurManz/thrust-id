@@ -181,7 +181,6 @@
       }
     },
     "RefugeeCreation" : {
-      "type" : "object",
       "required" : [ "birthDate", "civilStatus", "documentId", "documentType", "fingerprintHash", "firstName", "gender", "lastName", "originCountry", "photoHash", "registrationCountry" ],
       "properties" : {
         "firstName" : {
