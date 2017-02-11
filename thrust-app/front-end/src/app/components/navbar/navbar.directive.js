@@ -30,7 +30,7 @@
 
 			function logout() {
 				$cookies.remove('thrust_connected');
-				$state.go('home');
+				$state.go('login');
 			}
 		}
 	}

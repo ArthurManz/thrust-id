@@ -7,7 +7,7 @@
 		.factory('authService', authService);
 
 	/** @ngInject */
-	function authService($http, logger) {
+	function authService($http, $cookies, logger) {
 
 		var service = {
 			login: login
@@ -23,11 +23,11 @@
 				.catch(loginFailed);
 
 			function loginSucceeded(response) {
-				return response.data;
+				return response;
 			}
 
 			function loginFailed(error) {
-				logger.error('XHR Failed for Login.');
+				logger.error('Login');
 				logger.log(error.data);
 			}
 		}
