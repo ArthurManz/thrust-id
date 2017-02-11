@@ -1,36 +1,17 @@
 <div class="container">
 	<div class="row">
-		<div class="col-sm-6 col-md-4 col-md-offset-4">
+		<div class="col-md-8 col-md-offset-2">
 			<div class="account-wall">
-				<h2>Register page</h2>
-				<form class="form-signin" ng-submit="vm.submitRefugee()" novalidate>
+				<h2>Refugee Registration</h2>
+				<form class="form-register" ng-submit="vm.submitRefugee()" novalidate>
 					<formly-form model="vm.model" fields="vm.fields" options="vm.options" form="vm.form">
 					  <md-button type="submit" class="md-raised md-primary" ng-disabled="vm.form.$invalid">Submit</md-button>
 					  <md-button type="button" class="md-raised" ng-click="vm.options.resetModel()">Reset</md-button>
 					</formly-form>
 				</form>
 				<hr />
-			  <h2>Model Value</h2>
+			  <h2>Debug</h2>
 			  <pre>{{vm.model | json}}</pre>
-			  <h2>Fields <small>(note, functions are not shown)</small></h2>
-			  <pre>{{vm.originalFields | json}}</pre>
-			  <h2>Form</h2>
-			  <pre>{{vm.form | json}}</pre>
-			  <!-- form class="form-signin" ng-submit="register.submitRefugee()" novalidate>
-					<input type="text" ng-model="register.firstName" class="form-control m-t-b" required autofocus>
-					<input type="text" ng-model="register.lastName" class="form-control m-t-b" required>
-					<input type="text" ng-model="register.documentId" class="form-control m-t-b" required>
-					<input type="text" ng-model="register.documentType" class="form-control m-t-b" required>
-					<input type="text" ng-model="register.birthDate" class="form-control m-t-b" required>
-					<input type="text" ng-model="register.civilStatus" class="form-control m-t-b" required>
-					<input type="text" ng-model="register.gender" class="form-control m-t-b" required>
-					<input type="text" ng-model="register.fingerprintHash" class="form-control m-t-b" required>
-					<input type="text" ng-model="register.photoHash" class="form-control m-t-b" required>
-					<input type="text" ng-model="register.registrationCountry" class="form-control m-t-b" required>
-					<input type="text" ng-model="register.originCountry" class="form-control m-t-b" required>
-					<input type="text" ng-model="register.bloodGroup" class="form-control m-t-b" required>
-					<button class="btn btn-md btn-primary btn-block m-t-b" type="submit">Sign in</button>
-				</form -->
 			</div>
 		</div>
 	</div>
