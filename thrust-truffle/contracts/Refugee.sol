@@ -14,7 +14,6 @@ contract Refugee {
 	struct Personal {
         string firstName;
 		string lastName;
-		string city;
 		string countryOrigin;
 		string gender;
 		string bloodGroup;
@@ -73,7 +72,6 @@ contract Refugee {
     event RegisterRefugeePersonalData1(address indexed contractAddress,
         string firstName,
 		string lastName,
-		string city,
 		string gender,
 		string bloodGroup,
 		string birthDate);
@@ -117,7 +115,6 @@ contract Refugee {
 
     function setPersonalData( string _firstName,
 		string _lastName,
-		string _city,
 		string _gender,
 		string _bloodGroup,
 		string _birthDate,
@@ -132,7 +129,6 @@ contract Refugee {
 	{
 		personalData.firstName=_firstName;
 		personalData.lastName=_lastName;
-	    personalData.city=_city;
 		personalData.gender=_gender;
 		personalData.bloodGroup=_bloodGroup;
 		personalData.birthDate=_birthDate;
@@ -148,7 +144,7 @@ contract Refugee {
 
         LogAction(this,msg.sender, "Create",_details,_dateCreated);
 		LogAction(this,msg.sender, "Status","Created",_dateCreated);
-		RegisterRefugeePersonalData1(this,personalData.firstName,personalData.lastName,personalData.city,personalData.gender,personalData.bloodGroup,personalData.birthDate);
+		RegisterRefugeePersonalData1(this,personalData.firstName,personalData.lastName,personalData.gender,personalData.bloodGroup,personalData.birthDate);
 		RegisterRefugeePersonalData2(this,personalData.countryOrigin,personalData.civilStatus,personalData.documentType,personalData.documentId,personalData.fingerprintHash,personalData.photoHash);
 
 	}
