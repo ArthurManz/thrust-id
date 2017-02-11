@@ -9,14 +9,14 @@
 	function routerConfig($stateProvider, $urlRouterProvider) {
 
 		$stateProvider
-			.state('home', {
+			.state('login', {
 				url: '/',
 				templateUrl: 'app/login/login.html',
 				controller: 'LoginController',
 				controllerAs: 'login'
 			})
 			.state('WelcomePage', {
-				url: '/',
+				url: '/welcome',
 				templateUrl: 'app/welcome/welcome.html',
 				controller: 'WelcomeController',
 				controllerAs: 'vm'
@@ -29,5 +29,6 @@
 			});
 
 		$urlRouterProvider.otherwise('/');
+
 	}
 }());

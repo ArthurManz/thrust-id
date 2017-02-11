@@ -23,6 +23,6 @@
 
 		$mdThemingProvider.theme('default')
 		.primaryPalette('blue')
-		.accentPalette('green');
+		.accentPalette('red');
 	}
 }());

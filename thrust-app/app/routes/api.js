@@ -25,7 +25,7 @@ router.post('/user/login', function onRequest(req, res) {
         return res.status(401).send('Incorrect user name or password');
     }
     
-    res.status(200).send('Login succesfully');
+    res.status(200).send(JSON.stringify(usersDB[user]));
 
 });
 

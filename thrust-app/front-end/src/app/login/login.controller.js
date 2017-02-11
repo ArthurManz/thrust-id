@@ -6,10 +6,9 @@
 		.controller('LoginController', LoginController);
 
 	/** @ngInject */
-	function LoginController($state, $cookies, logger, authService) {
+	function LoginController($state, $cookies, logger, authService, $rootScope) {
 		var vm = this;
 
-		vm.showMenu = false;
 		vm.user = '';
 		vm.password = '';
 		vm.loginSubmit = loginSubmit;
@@ -17,10 +16,11 @@
 		initLogin();
 
 		function initLogin() {
-			vm.showMenu = false;
-			console.log($cookies.get('thrust_connected'));
+			$rootScope.isLogin = true;
+			console.log($cookies.getObject('thrust_connected'));
 
-			if ($cookies.get('thrust_connected')) {
+			if ($cookies.getObject('thrust_connected') !== undefined ) {
+				$rootScope.isLogin = false;
 				$state.go('WelcomePage');
 			}
 		}
@@ -29,9 +29,10 @@
 			return authService.login(vm.user, vm.password).then(function(response) {
 				if (response.status === 200) {
 					logger.success("Welcome " + vm.user);
-					$cookies.put('thrust_connected', vm.user);
+					$cookies.putObject('thrust_connected', response.data);
+					$cookies.put('user', vm.user);
+					$state.go('WelcomePage');
 				}
-				
 			});
     	}
 	}

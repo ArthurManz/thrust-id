@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="thrust-app">
+<html>
 
 <head>
 	<meta charset="utf-8">
@@ -46,7 +46,7 @@
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 </head>
 
-<body>
+<body ng-app="thrust-app" ng-cloak>
 	<!--[if lt IE 10]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -54,6 +54,17 @@
 		<md-toolbar>
 			<thrust-navbar></thrust-navbar>
 		</md-toolbar>
+		
+		<md-content ng-controller="MenuController" ng-hide="!isLoggedIn()">
+			<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+				<md-nav-item md-nav-href="#welcome" name="welcome">WelcomePage</md-nav-item>
+				<md-nav-item md-nav-href="#search" name="search">Search</md-nav-item>
+				<md-nav-item md-nav-href="#register" name="register">Register</md-nav-item>
+				<span flex></span>
+				<md-nav-item md-nav-click="logOut()">Logout</md-nav-item>
+			</md-nav-bar>
+		</md-content>
+	
 		<!-- be careful: nothing between md-toolbar and md-content -->
 		<md-content layout-fill>
 			<div ui-view></div>
@@ -90,6 +101,7 @@
 	<script src="app/register/register.controller.js"></script>
 	<script src="app/login/login.controller.js"></script>
 	<script src="app/app.route.js"></script>
+	<script src="app/app.menu.controller.js"></script>
 	<script src="app/app.constants.js"></script>
 	<script src="app/app.config.js"></script>
 	<!-- endinject -->

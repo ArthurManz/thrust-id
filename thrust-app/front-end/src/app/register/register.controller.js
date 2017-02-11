@@ -116,11 +116,17 @@
     // function assignment
     vm.submitRefugee = submitRefugee;
 
-    // variable assignment
-    vm.author = { // optionally fill in your info below :-)
-      name: 'Kent C. Dodds',
-      url: 'https://twitter.com/kentcdodds'
-    };
+    initLogin();
+
+		function initLogin() {
+			vm.showMenu = false;
+			console.log($cookies.get('thrust_connected'));
+
+			if ($cookies.get('thrust_connected') === undefined) {
+				$state.go('login');
+			}
+		}
+
     vm.exampleTitle = 'angular-material'; // add this
     vm.env = {
       angularVersion: angular.version.full,

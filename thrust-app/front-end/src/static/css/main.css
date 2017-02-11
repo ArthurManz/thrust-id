@@ -9,10 +9,27 @@
 .divider-color         { border-color: #BDBDBD; }
 
 
-.home-banner           {
+.home-banner {
     margin-top: -20px;
     height: 200px;
     background-image: url(/static/images/background.jpg);
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)
+}
+.un {
+    margin-top: -20px;
+    height: 200px;
+    background-image: url(/static/images/un-background.jpg);
+    background-position: center;
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)
+}
+
+.redcross {
+    margin-top: -20px;
+    height: 200px;
+    background-image: url(/static/images/redCross.jpg);
+    background-position: center;
     box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
     -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)
 }
