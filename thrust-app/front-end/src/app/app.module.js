@@ -8,8 +8,10 @@
 			'ngSanitize',
 			'ngMessages',
 			'ngAria',
+			'ngMaterial',
 			'ui.router',
 			'ui.bootstrap',
-			'toastr'
+			'toastr',
+			'formly'
 		]);
 }());
