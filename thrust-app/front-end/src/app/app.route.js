@@ -15,6 +15,12 @@
 				controller: 'LoginController',
 				controllerAs: 'login'
 			})
+			.state('WelcomePage', {
+				url: '/',
+				templateUrl: 'app/welcome/welcome.html',
+				controller: 'WelcomeController',
+				controllerAs: 'vm'
+			})
 			.state('register', {
 				url: '/register',
 				templateUrl: 'app/register/register.html',
