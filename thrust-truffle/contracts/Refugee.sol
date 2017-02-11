@@ -146,7 +146,8 @@ contract Refugee {
 
 		status=Status.Created;
 
-        LogAction(this,msg.sender, "Created",_details,_dateCreated);
+        LogAction(this,msg.sender, "Create",_details,_dateCreated);
+		LogAction(this,msg.sender, "Status","Created",_dateCreated);
 		RegisterRefugeePersonalData1(this,personalData.firstName,personalData.lastName,personalData.city,personalData.gender,personalData.bloodGroup,personalData.birthDate);
 		RegisterRefugeePersonalData2(this,personalData.countryOrigin,personalData.civilStatus,personalData.documentType,personalData.documentId,personalData.fingerprintHash,personalData.photoHash);
 
@@ -171,19 +172,23 @@ contract Refugee {
 
 	function setCountry (string _name, Status _status , string _dateCreated, string _details) {
 
+	  status= _status;
       country.name = _name;
       country.status = _status;
       country.dateCreated = _dateCreated;
       LogAction(this,msg.sender, "Country",_details,_dateCreated);
+	  LogAction(this,msg.sender, "Status",_details,_dateCreated);
       RegisterRefugeeCountry(this,country.name, country.status, country.dateCreated);
     }
 
     function setMunicipality (string _name, string _country, Status _status, string _dateCreated, string _details) {
+	  status= _status;
       municipality.name = _name;
       municipality.country = _country;
       municipality.status = _status;
       municipality.dateCreated = _dateCreated;
       LogAction(this,msg.sender, "Municipality",_details,_dateCreated);
+	  LogAction(this,msg.sender, "Status",_details,_dateCreated);
       RegisterRefugeeMunicipality(this,municipality.name, municipality.country,municipality.status, municipality.dateCreated);
     }
 
