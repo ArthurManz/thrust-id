@@ -1,6 +1,5 @@
-[
-  {
-    "user": "GovernmentAdmin",
+{ 
+  "GovernmentAdmin": {
     "password": "GovernmentAdmin",
     "roles": [
       "Read",
@@ -10,8 +9,7 @@
     "entity": "Government",
     "address": "0x7c0fa4e06a673a730c94ad944db019a234a47ff6"
   },
-  {
-    "user": "GovernmentRead",
+  "GovernmentRead": {
     "password": "GovernmentRead",
     "roles": [
       "Read"
@@ -19,8 +17,7 @@
     "entity": "Government",
     "address": "0xb9e0930948c4b4a8bb60eea7aa4824973c0feefc"
   },
-  {
-    "user": "GovernmentCreate",
+  "GovernmentCreate": {
     "password": "GovernmentCreate",
     "roles": [
       "Create",
@@ -29,8 +26,7 @@
     "entity": "Government",
     "address": "0x8314cfaf48a32523c2fc4f23caeb0e2629ed7352"
   },
-  {
-    "user": "UNAdmin",
+  "UNAdmin": {
     "password": "UNAdmin",
     "roles": [
       "Read",
@@ -40,8 +36,7 @@
     "entity": "UN",
     "address": "0xd5a18cb688b9851858d7615e3798123984c20fd9"
   },
-  {
-    "user": "UNRead",
+  "UNRead": {
     "password": "UNRead",
     "roles": [
       "Read"
@@ -49,8 +44,7 @@
     "entity": "UN",
     "address": "0xe995a04c50e92bc0a6c14ea013614b734cc37cf8"
   },
-  {
-    "user": "UNCreate",
+  "UNCreate": {
     "password": "UNCreate",
     "roles": [
       "Create",
@@ -59,8 +53,7 @@
     "entity": "UN",
     "address": "0x29ec360510b67bade37d5ea540e85d322e3e54c2"
   },
-  {
-    "user": "RedCrossAdmin",
+  "RedCrossAdmin": {
     "password": "RedCrossAdmin",
     "roles": [
       "Read",
@@ -70,8 +63,7 @@
     "entity": "RedCross",
     "address": "0xc7a90f18e829ff371c34c5b2d1996b996ac5db5a"
   },
-  {
-    "user": "RedCrossCreate",
+  "RedCrossCreate": {
     "password": "RedCrossCreate",
     "roles": [
       "Create",
@@ -80,8 +72,7 @@
     "entity": "RedCross",
     "address": "0xbd5538c977ce3ba46b5dfecdb977ff11c5abcf9a"
   },
-  {
-    "user": "RedCrossRead",
+  "RedCrossRead": {
     "password": "RedCrossRead",
     "roles": [
       "Read"
@@ -89,4 +80,4 @@
     "entity": "RedCross",
     "address": "0x18ac53d678554c9495d011d625082cdd807719e3"
   }
-]
+}
