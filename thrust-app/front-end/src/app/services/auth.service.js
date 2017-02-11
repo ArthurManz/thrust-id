@@ -18,7 +18,7 @@
 		////////////
 
 		function login(user, password) {
-			return $http.post('/api/auth/login', { name: user, password: password })
+			return $http.post('/api/user/login', { name: user, password: password })
 				.then(loginSucceeded)
 				.catch(loginFailed);
 
