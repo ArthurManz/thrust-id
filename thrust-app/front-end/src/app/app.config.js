@@ -7,7 +7,7 @@
 		.config(config);
 
 	/** @ngInject */
-	function config($logProvider, $httpProvider, toastrConfig) {
+	function config($logProvider, $httpProvider, toastrConfig, $mdThemingProvider) {
 		// Enable log
 		$logProvider.debugEnabled(true);
 
@@ -20,5 +20,9 @@
 		toastrConfig.positionClass = 'toast-bottom-right';
 		toastrConfig.preventDuplicates = false;
 		toastrConfig.progressBar = true;
+
+		$mdThemingProvider.theme('default')
+		.primaryPalette('blue')
+		.accentPalette('green');
 	}
 }());
