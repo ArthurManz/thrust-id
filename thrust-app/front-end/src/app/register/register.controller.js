@@ -49,79 +49,12 @@
     });
   });
 
-  function getCountries() {
-	  
-	  }
-  
-  function getBloodTypes() {
-	  return [
-                    {
-                        "name": "Alberta",
-                        "value":"alberta"
-                    },
-                    {
-                        "name":"British Columbia",
-                        "value":"british_columbia"
-                    },
-                    {
-                        "name":"Manitoba",
-                        "value":"manitoba"
-                    },
-                    {
-                        "name":"New Brunswick",
-                        "value":"new_brunswick"
-                    },
-                    {
-                        "name":"Newfoundland and Labrador",
-                        "value":"newfoundland_and_labrador"
-                    },
-                    {
-                        "name":"Northwest Territories",
-                        "value":"northwest_territories"
-                    },
-                    {
-                        "name":"Nova Scotia",
-                        "value":"nova_scotia"
-                    },
-                    {
-                        "name":"Nunavut",
-                        "value":"nunavut"
-                    },              
-                    {
-                        "name":"Ontario",
-                        "value":"ontario"
-                    },
-                    {
-                        "name":"Prince Edward Island",
-                        "value":"prince_edward_island"
-                    },
-                    {
-                        "name":"Quebec",
-                        "value":"quebec"
-                    },
-                    {
-                        "name":"Saskatchewan",
-                        "value":"saskatchewan"
-                    },
-                    {
-                        "name":"Yukon",
-                        "value":"Yukon"
-                    },
-                ]
-  }
-  
 	/** @ngInject */
 	function RegisterController($state, $cookies, $http, logger, formlyVersion) {
     var vm = this;
     // function assignment
     vm.submitRefugee = submitRefugee;
 
-    // variable assignment
-    vm.author = { // optionally fill in your info below :-)
-      name: 'Kent C. Dodds',
-      url: 'https://twitter.com/kentcdodds'
-    };
-    vm.exampleTitle = 'angular-material'; // add this
     vm.env = {
       angularVersion: angular.version.full,
       formlyVersion: formlyVersion
@@ -191,9 +124,10 @@
       },
       {
         key: 'gender',
-        type: 'input',
+        type: 'select',
         templateOptions: {
-          label: 'Gender'
+          label: 'Gender',
+          options: ['Female', 'Male']
         }
       },
 	  {
@@ -209,7 +143,7 @@
             type: 'select',
             templateOptions: {
               label: 'Country of origin',
-              options: ["Syria", "Afghanistan", "Somalia", "Sudan", "Congo"]
+              options: ["Afghanistan", "Congo", "Somalia", "Sudan", "Syria"]
             }
           },
           {
