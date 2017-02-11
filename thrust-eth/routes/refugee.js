@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var creator = require('../server/contract/creator');
+var account = require('../server/account/account');
 
 // Refugee API
 router.post('/refugee', function (req, res) {
 	// Create new refugee contract
+
+	var address=account.getAccountAddress(req.userId);
+	creator.createRefugee(req.body,address);
 	res.jsonp({ status: 'Creating contract' });
 });
 

@@ -1,2 +1,5 @@
 /.idea
 
+node_modules
+thrust-eth/server/.gitignore
+.node-xml*

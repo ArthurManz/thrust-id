@@ -23,7 +23,6 @@
     
     formlyConfig.setType({
  		name: 'select',
-//		template: '<md-select ng-model="model[options.key]" md-theme="{{to.theme}}"><md-option ng-repeat="option in to.options" ng-value="option[to.valueProp || \'value\']">        {{ option[to.labelProp || \'name\'] }}    </md-option></md-select>'
 		template: '<md-select ng-model="model[options.key]" md-theme="{{to.theme}}"><md-option ng-repeat="option in to.options" ng-value="option">        {{ option }}    </md-option></md-select>'
 	});	
     
@@ -41,80 +40,23 @@
     
     // having trouble getting icons to work.
     // Feel free to clone this jsbin, fix it, and make a PR to the website repo: https://github.com/formly-js/angular-formly-website
-    formlyConfig.templateManipulators.preWrapper.push(function(template, options) {
-      if (!options.data.icon) {
-        return template;
-      }
-      return '<md-icon class="step" md-font-icon="icon-' + options.data.icon + '"></md-icon>' + template;
-    });
+    //formlyConfig.templateManipulators.preWrapper.push(function(template, options) {
+    //  if (!options.data.icon) {
+    //    return template;
+    //  }
+    //  return '<md-icon class="step" md-font-icon="icon-' + options.data.icon + '"></md-icon>' + template;
+    //});
   });
 
-  function getCountries() {
-	  
-	  }
-  
-  function getBloodTypes() {
-	  return [
-                    {
-                        "name": "Alberta",
-                        "value":"alberta"
-                    },
-                    {
-                        "name":"British Columbia",
-                        "value":"british_columbia"
-                    },
-                    {
-                        "name":"Manitoba",
-                        "value":"manitoba"
-                    },
-                    {
-                        "name":"New Brunswick",
-                        "value":"new_brunswick"
-                    },
-                    {
-                        "name":"Newfoundland and Labrador",
-                        "value":"newfoundland_and_labrador"
-                    },
-                    {
-                        "name":"Northwest Territories",
-                        "value":"northwest_territories"
-                    },
-                    {
-                        "name":"Nova Scotia",
-                        "value":"nova_scotia"
-                    },
-                    {
-                        "name":"Nunavut",
-                        "value":"nunavut"
-                    },              
-                    {
-                        "name":"Ontario",
-                        "value":"ontario"
-                    },
-                    {
-                        "name":"Prince Edward Island",
-                        "value":"prince_edward_island"
-                    },
-                    {
-                        "name":"Quebec",
-                        "value":"quebec"
-                    },
-                    {
-                        "name":"Saskatchewan",
-                        "value":"saskatchewan"
-                    },
-                    {
-                        "name":"Yukon",
-                        "value":"Yukon"
-                    },
-                ]
-  }
-  
 	/** @ngInject */
-	function RegisterController($state, $cookies, $http, logger, formlyVersion) {
+	function RegisterController($state, $cookies, $http, $stateParams, logger, formlyVersion) {
     var vm = this;
-    // function assignment
+    
     vm.submitRefugee = submitRefugee;
+    vm.getRefugee = getRefugee;
+    vm.init = init;
+
+	  init();
 
     initLogin();
 
@@ -128,10 +70,13 @@
 		}
 
     vm.exampleTitle = 'angular-material'; // add this
+
     vm.env = {
       angularVersion: angular.version.full,
       formlyVersion: formlyVersion
     };
+
+	console.info($stateParams);
 
     vm.model = {};
     vm.options = {};
@@ -197,9 +142,10 @@
       },
       {
         key: 'gender',
-        type: 'input',
+        type: 'select',
         templateOptions: {
-          label: 'Gender'
+          label: 'Gender',
+          options: ['Female', 'Male']
         }
       },
 	  {
@@ -215,7 +161,7 @@
             type: 'select',
             templateOptions: {
               label: 'Country of origin',
-              options: ["Syria", "Afghanistan", "Somalia", "Sudan", "Congo"]
+              options: ["Afghanistan", "Congo", "Somalia", "Sudan", "Syria"]
             }
           },
           {
@@ -264,12 +210,34 @@
       }
     ];
 
+    function getRefugee(id) {
+		var req = {method: 'GET', url: '/refugee?id=' + id};
+		$http(req).then(success, error);
+		
+		function success(response) {
+			alert("SUCCESS")
+			vm.model = JSON.parse(response.data);
+		}
+		
+		function error(response) {
+			alert("FAILED TO LOAD REFUGEE");
+		}
+	}
     
     vm.originalFields = angular.copy(vm.fields);
     
-    // function definition
+    function init() {
+		console.info($stateParams);
+		if ($stateParams.refId != undefined) {
+			vm.title = "Refugee Details";
+			getRefugee($stateParams.refId);
+		} else {
+			vm.title = "Refugee Registration";
+		}
+	}
+    
     function submitRefugee() {
-      //vm.options.updateInitialValue();
+      
       var req = {
 		 method: 'POST',
 		 url: '/refugee',
@@ -279,10 +247,13 @@
       $http(req).then(success,error);
     
       function success(resp) {
-		  console.log(resp.data);
+		  vm.status = resp.status;
+		  $state.go("details", {refId: 101});
 	  }
+	  
 	  function error(resp) {
-		  console.error(resp.data);
+		  vm.status = resp.status;
+		  $state.go("details", {refId: 404});
 	  }
     }
   };

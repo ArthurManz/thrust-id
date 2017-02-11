@@ -26,6 +26,12 @@
 				templateUrl: 'app/register/register.html',
 				controller: 'RegisterController',
 				controllerAs: 'vm'
+			})
+			.state('details', {
+				url: '/details/:refId',
+				templateUrl: 'app/register/register.html',
+				controller: 'RegisterController',
+				controllerAs: 'vm'
 			});
 
 		$urlRouterProvider.otherwise('/');
