@@ -23,6 +23,7 @@ function initConnection() {
 	connect(config.provider).then(function onConnected(connection) {
 		web3 = connection;
 		console.log('Connected');
+		return web3;
 	});
 }
 
