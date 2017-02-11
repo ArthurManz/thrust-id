@@ -13,7 +13,7 @@ module.exports = {
 * @returns {String} The unlocked account address
 */
 
-function unlockAccount(queryData) {
+function unlockAccount(accountAddress,accountPassword) {
 	var address;
 	var web3 = connector.getConnection();
 
@@ -21,12 +21,9 @@ function unlockAccount(queryData) {
 		console.error('No Account found on the connected provider');
 		return null;
 	}
-	console.log(queryData);
-	console.log('The id: ' + queryData.index);
-	address = web3.eth.accounts[queryData.index];
 
 	console.log('Unlocking Account: ' + address + '...');
-	web3.personal.unlockAccount(address, queryData.password, UNLOCKED_DURATION_SEC);
+	web3.personal.unlockAccount(accountAddress, accountPassword, UNLOCKED_DURATION_SEC);
 	console.log('Account ' + address + ': Unlocked!');
 
 	return address;

@@ -115,7 +115,7 @@ contract Refugee {
 
 	function Refugee()
 	{}
-	
+
     function setPersonalData( string _firstName,
 		string _lastName,
 		string _gender,
@@ -149,7 +149,7 @@ contract Refugee {
 		LogAction(this,msg.sender, "Status","Created",_dateCreated);
 		RegisterRefugeePersonalData1(this,personalData.firstName,personalData.lastName,personalData.gender,personalData.bloodGroup,personalData.birthDate);
 		RegisterRefugeePersonalData2(this,personalData.countryOrigin,personalData.civilStatus,personalData.documentType,personalData.documentId,personalData.fingerprintHash,personalData.photoHash);
-
+	    LogRefugeePersonalData(personalData.firstName,personalData.lastName,personalData.documentId,this);
 	}
 
 
