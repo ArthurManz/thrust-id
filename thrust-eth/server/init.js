@@ -3,7 +3,7 @@ var creator = require('./contract/creator');
 var retriever = require('./contract/retriever');
 
 
-var data= {
+var data1= {
   "firstName": "Arturo",
   "lastName": "Manzaneda",
   "documentId": "44793290A",
@@ -39,11 +39,17 @@ module.exports = function init() {
 
     setTimeout(function()
     { 
-      //creator.createRefugee(data2,"0xb31fef7224759f166bbc715c6b0ff4e557071554");
-      // retriever.getPersonalData("0xe5143054d4b084399fe9c05f566e9030443a6a14");//Arturo
-      // retriever.getPersonalData("0x8d1d5f8152ec59cef6c4233d88843d4a9fe3b26c");//Juan
-      retriever.getContractAddressByName("Arturo","Manzaneda","44793290A");
+  //    creator.createRefugee(data2,"0xcf7a93582ad21a097a27d60178d03fa81ce1d790");
+  //    creator.createRefugee(data1,"0xcf7a93582ad21a097a27d60178d03fa81ce1d790");
 
+ 
+    retriever.getPersonalData(retriever.getContractAddressByName("Juan","Manuel","12343"))
+  
+  
+    retriever.getPersonalData(retriever.getContractAddressByName("Arturo","Manzaneda","44793290A"))
+
+
+      
     }
     , 4000);
 
