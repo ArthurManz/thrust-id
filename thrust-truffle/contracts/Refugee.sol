@@ -113,6 +113,9 @@ contract Refugee {
         string bed,
         string dateCreated);
 
+	function Refugee()
+	{}
+	
     function setPersonalData( string _firstName,
 		string _lastName,
 		string _gender,
