@@ -5,10 +5,9 @@ var account = require('../server/account/account');
 
 // Refugee API
 router.post('/refugee', function (req, res) {
+	console.log("Create refugee with data:", req.body);
 	// Create new refugee contract
-
-	var address=account.getAccountAddress(req.userId);
-	creator.createRefugee(req.body,address);
+	creator.createRefugee(req.body, "0x7c0fa4e06a673a730c94ad944db019a234a47ff6");
 	res.jsonp({ status: 'Creating contract' });
 });
 

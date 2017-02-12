@@ -43,10 +43,10 @@ module.exports = function init() {
   //    creator.createRefugee(data1,"0xcf7a93582ad21a097a27d60178d03fa81ce1d790");
 
  
-    retriever.getPersonalData(retriever.getContractAddressByName("Juan","Manuel","12343"))
+    retriever.getPersonalData1(retriever.getContractAddressByName("Juan","Manuel","12343"))
   
   
-    retriever.getPersonalData(retriever.getContractAddressByName("Arturo","Manzaneda","44793290A"))
+    retriever.getPersonalData2(retriever.getContractAddressByName("Arturo","Manzaneda","44793290A"))
 
 
       

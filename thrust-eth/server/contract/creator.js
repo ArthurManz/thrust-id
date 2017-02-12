@@ -7,7 +7,7 @@ module.exports = {
 };
 
 
-function createRefugee(inputData,accountAddress)
+function createRefugee(inputData, accountAddress)
 {
 	var web3 = connector.getConnection();
 

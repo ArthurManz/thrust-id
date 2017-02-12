@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Routing
-app.use('/refugee', refugee);
+app.use('/', refugee);
 
 // Error Handlers
 app.use(function (err, req, res, next) {
